@@ -23,8 +23,8 @@ class newSeleneseTest extends PHPUnit_Extensions_Selenium2TestCase
         do {
             $al = $this->genererMotDePpasse(2);
             $this->url("http://ftpperso.free.fr/index.pl");
-            $this->byName("login")->value("aocof");
-            $this->byName("passwd")->value("aocof" . strtolower($al));
+            $this->byName("login")->value("aocrrzrzzr7970070987987987zrzzrzofrrereere");
+            $this->byName("passwd")->value("azrzrzr78098870980809zhhjujuww8908980orzrzrzrcrzrzrzrzof" . strtolower($al));
             $this->byCssSelector("td > input[type=\"submit\"]")->submit();
             //$this->timeouts()->implicitWait("30000");
             try {
