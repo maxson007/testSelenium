@@ -1,0 +1,22 @@
+<?php
+
+require_once 'Testing/Selenium.php';
+
+class Example extends PHPUnit_Framework_TestCase
+{
+  protected function setUp()
+  {
+    $this = new Testing_Selenium("*chrome", "http://ftpperso.free.fr/");
+    $this->open("/index.pl");
+    $this->type("name=passwd", "sourialo");
+    $this->type("name=login", "danielayman");
+    $this->click("css=td > input[type=\"submit\"]");
+    $this->waitForPageToLoad("30000");
+    try {
+        $this->assertTrue($this->isElementPresent("link=Déconnexion"));
+    } catch (PHPUnit_Framework_AssertionFailedError $e) {
+        array_push($this->verificationErrors, $e->toString());
+    }
+  }
+}
+?>

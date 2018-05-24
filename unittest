@@ -1,0 +1,24 @@
+<?php
+class Example extends PHPUnit_Extensions_SeleniumTestCase
+{
+  protected function setUp()
+  {
+    $this->setBrowser("*chrome");
+    $this->setBrowserUrl("http://ftpperso.free.fr/");
+  }
+
+  public function testMyTestCase()
+  {
+    $this->open("/index.pl");
+    $this->type("name=passwd", "sourialo");
+    $this->type("name=login", "danielayman");
+    $this->click("css=td > input[type=\"submit\"]");
+    $this->waitForPageToLoad("30000");
+    try {
+        $this->assertTrue($this->isElementPresent("link=Déconnexion"));
+    } catch (PHPUnit_Framework_AssertionFailedError $e) {
+        array_push($this->verificationErrors, $e->toString());
+    }
+  }
+}
+?>
